@@ -3,9 +3,9 @@ public class ServiceB
 {
     private readonly IDependency dependency;
 
-    public ServiceB(DependencyB dependency)
+    public ServiceB(DependencyResolver dependencyResolver)
     {
-        this.dependency = dependency;
+        this.dependency = dependencyResolver("B");
     }
 
     public string InvokeSomeMethod() => this.dependency.SomeMethod();
