@@ -1,11 +1,13 @@
-﻿namespace KeyedDependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace KeyedDependencyInjection;
 public class ServiceB
 {
     private readonly IDependency dependency;
 
-    public ServiceB(DependencyResolver dependencyResolver)
+    public ServiceB([FromKeyedServices("B")] IDependency dependency)
     {
-        this.dependency = dependencyResolver("B");
+        this.dependency = dependency;
     }
 
     public string InvokeSomeMethod() => this.dependency.SomeMethod();
